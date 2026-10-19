@@ -11,14 +11,14 @@ export const siteConfig = {
   // Exemplo de formato: "5511912345678"
   // PLACEHOLDER: enquanto estiver vazio, os botões de agendamento ficam
   // desativados e nenhum link falso é criado.
-  whatsappNumber: '',
+  whatsappNumber: '55110689953078',
 
   // Mensagem inicial usada no link do WhatsApp.
   whatsappMessage:
-    'Olá, Beatrice! Gostaria de consultar os horários disponíveis para agendar um atendimento na BP Glow Nails.',
+    'Olá, meu nome é  Beatrice! Gostaria de consultar os horários disponíveis para agendar um atendimento na BP Glow Nails.',
 
   // Instagram: apenas o usuário, sem @. Exemplo: "bpglownails"
-  instagramHandle: '',
+  instagramHandle: 'bpglownails',
 
   // Endereço, em texto livre. Exemplo: "Rua Exemplo, 123 — Bairro, Cidade"
   address: '',

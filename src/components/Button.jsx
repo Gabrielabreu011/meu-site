@@ -12,6 +12,8 @@ const variants = {
     'border border-rosegold/60 bg-cream/60 text-cocoa hover:border-cocoa hover:bg-blush/30',
   light:
     'bg-cream text-cocoa shadow-soft hover:bg-nude',
+  outlineLight:
+    'border border-cream/70 text-cream hover:bg-cream/10',
 }
 
 /**

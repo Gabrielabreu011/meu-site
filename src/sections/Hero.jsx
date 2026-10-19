@@ -1,18 +1,17 @@
-import { motion, useScroll, useTransform } from 'motion/react'
+import { motion } from 'motion/react'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import Sparkle from '../components/Sparkle'
 import Button, { BookingButton } from '../components/Button'
+import InstagramIcon from '../components/InstagramIcon'
+import { getInstagramLink } from '../lib/utils'
 import { useReducedMotionPreference } from '../hooks/useReducedMotionPreference'
 
 const ease = [0.22, 1, 0.36, 1]
 
 export default function Hero() {
   const reduced = useReducedMotionPreference()
-
-  // Parallax: a logo sobe um pouco mais devagar que a página
-  const { scrollY } = useScroll()
-  const parallaxY = useTransform(scrollY, [0, 700], [0, reduced ? 0 : -60])
+  const instagram = getInstagramLink()
 
   const container = {
     hidden: {},
@@ -57,30 +56,34 @@ export default function Hero() {
               Conhecer os serviços
             </Button>
           </motion.div>
+          {instagram && (
+            <motion.a
+              variants={item}
+              href={instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex items-center gap-2 text-cocoa underline decoration-rosegold underline-offset-4 transition-colors hover:text-ink"
+            >
+              <InstagramIcon size={18} /> Acompanhe os trabalhos no Instagram
+            </motion.a>
+          )}
         </motion.div>
 
-        {/* Logo da marca como peça central: flutua, tem reflexo e parallax */}
-        <motion.div
-          style={{ y: parallaxY }}
-          className="relative mx-auto w-full max-w-md lg:max-w-[30rem]"
-        >
-          <div className="animate-float rounded-[2.5rem] bg-rosegold-metal p-[2px] shadow-lift">
+        {/* Logo da marca como peça central */}
+        <div className="relative mx-auto w-full max-w-md lg:max-w-[30rem]">
+          <div className="rounded-[2.5rem] bg-rosegold-metal p-[2px] shadow-lift">
             <motion.div
-              className="relative overflow-hidden rounded-[calc(2.5rem-2px)] bg-nude"
+              className="overflow-hidden rounded-[calc(2.5rem-2px)] bg-nude"
               initial={reduced ? false : { clipPath: 'inset(100% 0% 0% 0%)' }}
               animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
               transition={{ duration: 1.1, delay: 0.25, ease }}
             >
               <Logo imgClassName="block aspect-square w-full" />
-              <span
-                aria-hidden="true"
-                className="animate-shine pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/55 to-transparent"
-              />
             </motion.div>
           </div>
           <Sparkle twinkle className="absolute -right-3 -top-4 h-9 w-9 sm:-right-6" />
           <Sparkle twinkle delay={2} className="absolute -bottom-4 -left-3 h-6 w-6 sm:-left-6" />
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

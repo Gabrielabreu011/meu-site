@@ -3,7 +3,7 @@ import InstagramIcon from '../components/InstagramIcon'
 import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import Sparkle from '../components/Sparkle'
-import { BookingButton } from '../components/Button'
+import Button, { BookingButton } from '../components/Button'
 import { siteConfig } from '../config/site'
 import { getInstagramLink, getWhatsAppLink } from '../lib/utils'
 
@@ -42,19 +42,25 @@ export default function Booking() {
             Fale diretamente com a Beatrice para consultar os horários disponíveis e combinar os
             detalhes do seu atendimento.
           </p>
-          <div className="mt-9">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <BookingButton variant="light">Agendar pelo WhatsApp</BookingButton>
-            {!whatsapp && (
-              <p className="mt-4 text-sm text-cream/75">
-                O contato por WhatsApp será liberado em breve.
-                {import.meta.env.DEV && (
-                  <span className="mt-1 block text-blush">
-                    (Aviso de desenvolvimento: informe o número em src/config/site.js)
-                  </span>
-                )}
-              </p>
+            {instagram && (
+              <Button href={instagram} external variant="outlineLight">
+                <InstagramIcon size={18} /> Ver Instagram
+              </Button>
             )}
           </div>
+
+          {!whatsapp && (
+            <p className="mt-4 text-sm text-cream/75">
+              O contato por WhatsApp será liberado em breve.
+              {import.meta.env.DEV && (
+                <span className="mt-1 block text-blush">
+                  (Aviso de desenvolvimento: informe o número em src/config/site.js)
+                </span>
+              )}
+            </p>
+          )}
         </Reveal>
 
         <Reveal delay={0.1}>

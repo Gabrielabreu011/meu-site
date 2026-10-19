@@ -1,11 +1,9 @@
 import { MotionConfig } from 'motion/react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import ManicureBackground from './components/ManicureBackground'
-import ScrollProgress from './components/ScrollProgress'
-import CursorGlow from './components/CursorGlow'
-import FloatingSparkles from './components/FloatingSparkles'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Hero from './sections/Hero'
+import About from './sections/About'
 import Services from './sections/Services'
 import Gallery from './sections/Gallery'
 import Testimonials from './sections/Testimonials'
@@ -15,10 +13,6 @@ import Booking from './sections/Booking'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <ManicureBackground />
-      <ScrollProgress />
-      <CursorGlow />
-      <FloatingSparkles />
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cocoa focus:px-5 focus:py-3 focus:text-cream"
@@ -28,6 +22,7 @@ export default function App() {
       <Navbar />
       <main id="conteudo">
         <Hero />
+        <About />
         <Services />
         <Gallery />
         <Testimonials />
@@ -35,6 +30,7 @@ export default function App() {
         <Booking />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </MotionConfig>
   )
 }
