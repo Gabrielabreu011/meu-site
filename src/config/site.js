@@ -11,7 +11,7 @@ export const siteConfig = {
   // Exemplo de formato: "5511912345678"
   // PLACEHOLDER: enquanto estiver vazio, os botões de agendamento ficam
   // desativados e nenhum link falso é criado.
-  whatsappNumber: '5511689953078',
+  whatsappNumber: '5511968953078',
 
   // Mensagem inicial usada no link do WhatsApp.
   whatsappMessage:
