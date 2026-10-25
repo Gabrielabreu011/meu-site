@@ -6,7 +6,6 @@ import SectionHeading from '../components/SectionHeading'
 import Sparkle from '../components/Sparkle'
 import { BookingButton } from '../components/Button'
 import { services } from '../data/content'
-import { siteConfig } from '../config/site'
 import { useReducedMotionPreference } from '../hooks/useReducedMotionPreference'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -18,7 +17,6 @@ export default function Services() {
 
   const current = services[active]
   const Icon = current.icon
-  const message = `Olá, Beatrice! Gostaria de agendar um atendimento de ${current.name.toLowerCase()} na ${siteConfig.brand}. Quais horários estão disponíveis?`
 
   // Navegação por teclado: setas, Home e End
   const onKeyDown = (e, index) => {
@@ -110,7 +108,7 @@ export default function Services() {
                 <h3 className="mt-7 text-4xl sm:text-5xl">{current.name}</h3>
                 <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink/75">{current.description}</p>
                 <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <BookingButton message={message}>Solicitar agendamento</BookingButton>
+                  <BookingButton serviceId={current.id}>Solicitar agendamento</BookingButton>
                   <p className="text-sm text-ink/60">Valores e duração confirmados com a Beatrice.</p>
                 </div>
               </motion.div>

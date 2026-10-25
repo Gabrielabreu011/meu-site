@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
-import { cn, getWhatsAppLink } from '../lib/utils'
+import { cn, isValidWhatsApp } from '../lib/utils'
+import { siteConfig } from '../config/site'
+import { useBooking } from '../hooks/useBooking'
 import { useReducedMotionPreference } from '../hooks/useReducedMotionPreference'
 
 const base =
@@ -7,11 +9,11 @@ const base =
 
 const variants = {
   primary:
-    'bg-rosegold-deep text-cream hover:brightness-110 focus-visible:outline-cocoa',
+    'btn-shine bg-rosegold-deep text-cream hover:brightness-110 focus-visible:outline-cocoa',
   secondary:
     'border border-rosegold/60 bg-cream/60 text-cocoa hover:border-cocoa hover:bg-blush/30',
   light:
-    'bg-cream text-cocoa shadow-soft hover:bg-nude',
+    'btn-shine bg-cream text-cocoa shadow-soft hover:bg-nude',
   outlineLight:
     'border border-cream/70 text-cream hover:bg-cream/10',
 }
@@ -71,14 +73,14 @@ export default function Button({
 }
 
 /**
- * Botão de agendamento pelo WhatsApp.
- * Enquanto não houver número válido em src/config/site.js, fica desativado
- * e não cria nenhum link falso.
+ * Botão de agendamento: abre a janela em que a pessoa escolhe o que quer
+ * e depois segue para o WhatsApp com a mensagem pronta.
+ * Enquanto não houver número válido em src/config/site.js, fica desativado.
  */
-export function BookingButton({ message, variant = 'primary', className, children = 'Agendar horário' }) {
-  const link = getWhatsAppLink(message)
+export function BookingButton({ serviceId, variant = 'primary', className, children = 'Agendar horário' }) {
+  const { openBooking } = useBooking()
 
-  if (!link) {
+  if (!isValidWhatsApp(siteConfig.whatsappNumber)) {
     return (
       <Button
         variant={variant}
@@ -92,7 +94,7 @@ export function BookingButton({ message, variant = 'primary', className, childre
   }
 
   return (
-    <Button href={link} external variant={variant} className={className}>
+    <Button variant={variant} className={className} onClick={() => openBooking(serviceId)}>
       {children}
     </Button>
   )

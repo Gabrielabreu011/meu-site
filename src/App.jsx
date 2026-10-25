@@ -5,6 +5,7 @@ import ScrollProgress from './components/ScrollProgress'
 import WaveDivider from './components/WaveDivider'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
+import { BookingProvider } from './context/BookingContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
@@ -16,27 +17,29 @@ import Booking from './sections/Booking'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cocoa focus:px-5 focus:py-3 focus:text-cream"
-      >
-        Pular para o conteúdo
-      </a>
-      <Intro />
-      <ScrollProgress />
-      <Navbar />
-      <main id="conteudo">
-        <Hero />
-        <WaveDivider />
-        <About />
-        <Services />
-        <Gallery />
-        <Testimonials />
-        <FAQ />
-        <Booking />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <BookingProvider>
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cocoa focus:px-5 focus:py-3 focus:text-cream"
+        >
+          Pular para o conteúdo
+        </a>
+        <Intro />
+        <ScrollProgress />
+        <Navbar />
+        <main id="conteudo">
+          <Hero />
+          <WaveDivider />
+          <About />
+          <Services />
+          <Gallery />
+          <Testimonials />
+          <FAQ />
+          <Booking />
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
+      </BookingProvider>
     </MotionConfig>
   )
 }
