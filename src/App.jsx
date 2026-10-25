@@ -5,12 +5,7 @@ import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { BookingProvider } from './context/BookingContext'
 import Hero from './sections/Hero'
-import About from './sections/About'
-import Services from './sections/Services'
-import Gallery from './sections/Gallery'
-import Testimonials from './sections/Testimonials'
-import FAQ from './sections/FAQ'
-import Booking from './sections/Booking'
+import Explore from './sections/Explore'
 
 export default function App() {
   return (
@@ -28,12 +23,7 @@ export default function App() {
         <main id="conteudo">
           <Hero />
           <WaveDivider />
-          <About />
-          <Services />
-          <Gallery />
-          <Testimonials />
-          <FAQ />
-          <Booking />
+          <Explore />
         </main>
         <Footer />
         <FloatingWhatsApp />
