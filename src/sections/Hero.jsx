@@ -3,14 +3,14 @@ import { motion, useScroll, useTransform } from 'motion/react'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import Sparkle from '../components/Sparkle'
-import SplitText from '../components/SplitText'
-import { INTRO_DELAY } from '../components/Intro'
+import { SplitText } from '../components/MotionKit'
+import { EASE, INTRO_SECONDS } from '../lib/motion'
 import Button, { BookingButton } from '../components/Button'
 import InstagramIcon from '../components/InstagramIcon'
 import { getInstagramLink } from '../lib/utils'
 import { useReducedMotionPreference } from '../hooks/useReducedMotionPreference'
 
-const ease = [0.22, 1, 0.36, 1]
+const ease = EASE
 
 export default function Hero() {
   const reduced = useReducedMotionPreference()
@@ -26,7 +26,7 @@ export default function Hero() {
   const sparkY = useTransform(scrollYProgress, [0, 1], [0, range(-160)])
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, reduced ? 1 : 0.2])
 
-  const d = INTRO_DELAY
+  const d = reduced ? 0 : INTRO_SECONDS
   const item = (i) => ({
     initial: { opacity: 0, y: reduced ? 0 : 28 },
     animate: { opacity: 1, y: 0 },

@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { cn } from '../lib/utils'
 import Reveal from './Reveal'
 import Sparkle from './Sparkle'
-import SplitText from './SplitText'
+import { SplitText } from './MotionKit'
 
 export default function SectionHeading({ id, title, description, align = 'center', className }) {
   const center = align === 'center'
