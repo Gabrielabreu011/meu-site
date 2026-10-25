@@ -55,6 +55,25 @@
 }
 
 @layer utilities {
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.38) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.9s ease;
+  }
+
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+
   .bg-rosegold-metal {
     background-image: linear-gradient(
       135deg,
@@ -95,100 +114,13 @@
     background-clip: text;
     color: transparent;
   }
-
-  /* ---------- Efeitos especiais ---------- */
-
-  /* Flutuar suavemente (logo do Hero) */
-  .animate-float {
-    animation: float 7s ease-in-out infinite;
-  }
-
-  /* Reflexo que atravessa o elemento de tempos em tempos */
-  .animate-shine {
-    animation: shine-loop 6.5s ease-in-out 1.5s infinite both;
-  }
-
-  /* Halo pulsante (ícones dos serviços) */
-  .animate-glow {
-    animation: glow-pulse 2.4s ease-in-out infinite;
-  }
-
-  /* Reflexo que passa pelo cartão ao passar o mouse */
-  .card-shine {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card-shine::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    z-index: 2;
-    width: 45%;
-    background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.6), transparent);
-    transform: translateX(-150%) skewX(-20deg);
-    pointer-events: none;
-  }
-
-  .card-shine:hover::before {
-    animation: shine 0.9s ease both;
-  }
 }
-
-/* ---------- Animações (keyframes) ---------- */
 
 @keyframes twinkle {
   0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); }
   50% { opacity: 1; transform: scale(1.1) rotate(12deg); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes shine {
-  0% { transform: translateX(-150%) skewX(-20deg); }
-  100% { transform: translateX(450%) skewX(-20deg); }
-}
-
-@keyframes shine-loop {
-  0%, 55% { transform: translateX(-150%) skewX(-20deg); }
-  100% { transform: translateX(450%) skewX(-20deg); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgb(183 121 112 / 0); }
-  50% { box-shadow: 0 0 26px 6px rgb(183 121 112 / 0.38); }
-}
-
-@keyframes drift {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  12% { opacity: 0.75; }
-  85% { opacity: 0.55; }
-  100% { transform: translateY(-115vh) rotate(200deg); opacity: 0; }
-}
-
-/* Fundo animado (manchas de luz) */
-@keyframes blob-one {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(18vw, 12vh) scale(1.15); }
-  66% { transform: translate(6vw, 32vh) scale(0.92); }
-}
-
-@keyframes blob-two {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(-22vw, -14vh) scale(1.1); }
-  75% { transform: translate(-8vw, 18vh) scale(0.9); }
-}
-
-@keyframes blob-three {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  35% { transform: translate(14vw, -20vh) scale(1.12); }
-  70% { transform: translate(-16vw, -8vh) scale(0.94); }
-}
-
-/* Mantém por último: respeita quem desativa animações no sistema */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

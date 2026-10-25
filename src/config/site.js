@@ -18,7 +18,7 @@ export const siteConfig = {
     'Olá, meu nome é  Beatrice! Gostaria de consultar os horários disponíveis para agendar um atendimento na BP Glow Nails.',
 
   // Instagram: apenas o usuário, sem @. Exemplo: "bpglownails"
-  instagramHandle: 'bpglownails',
+  instagramHandle: 'bpglow.nails',
 
   // Endereço, em texto livre. Exemplo: "Rua Exemplo, 123 — Bairro, Cidade"
   address: '',

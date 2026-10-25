@@ -1,5 +1,8 @@
 import { MotionConfig } from 'motion/react'
 import Navbar from './components/Navbar'
+import Intro from './components/Intro'
+import ScrollProgress from './components/ScrollProgress'
+import WaveDivider from './components/WaveDivider'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Hero from './sections/Hero'
@@ -19,9 +22,12 @@ export default function App() {
       >
         Pular para o conteúdo
       </a>
+      <Intro />
+      <ScrollProgress />
       <Navbar />
       <main id="conteudo">
         <Hero />
+        <WaveDivider />
         <About />
         <Services />
         <Gallery />
